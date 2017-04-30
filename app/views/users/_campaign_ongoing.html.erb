@@ -1,0 +1,15 @@
+<!-- Form Start -->               
+<div class="container-fluid">
+  <div class="row">                                                    
+    <div class="form">
+      <p><img src="<%= asset_path('new_ui/icon.jpg') %>" alt="Icon" /></p>           
+      <p style="font-size:18px; color:#78BE20;">BE THE FIRST TO KNOW</p>
+
+      <%= form_for @user, :url => { :action => "create" }, :html => {:class => "form-inline"} do |f| %> 
+        <%= f.text_field :email, :placeholder => "Enter Email", :class => "emailbox" %> 
+        <input class="btn green" type="submit" value="STEP INSIDE" />
+      <% end %>
+    </div>
+  </div>
+</div>
+<!-- Form End -->  

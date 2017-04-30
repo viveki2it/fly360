@@ -1,0 +1,112 @@
+<div class="header-block">
+  <div class="global-logo-icon guest">
+    <div class="image"></div>
+    <div class="induction-desc"> @MenudMoments / team@menud.co</div>
+  </div> 
+</div>
+
+<div class="hero">
+  <div class="container refer_container">
+    <div class="row">
+        <div class="col-sm-5">
+            <div class="phone_img">
+            </div>
+        </div>
+        <div class="col-sm-7 text__header__div">
+            <div class="text__head_1">
+                <h6 class="text_header_1">ERIN'S RECOMMENDATIONS ARE HERE!</h6>
+            </div>
+            <div class='text__head_2'>
+                <p class="invite_frds">Invite Friends & Get Menud For Free</p>
+                <p class="share_frds">share your unique link via email, Facebook or Twitter and earn free months (and a potential free dinner) for each who signs up.</p>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                  <form>
+                  <div class="input-group">
+                    <input type="text" class="form-control"
+                        value="<%= root_url %>?ref=<%= @user.referral_code %>" placeholder="Some path" id="copy-input">
+                    <span class="input-group-btn">
+                      <button class="btn btn-default" type="button" id="copy-button"
+                          data-toggle="tooltip" data-placement="top"
+                          title="Copy to Clipboard" data-action="copy-text" data-copy-target="copy-input">
+                        Copy
+                      </button>
+                    </span>
+                  </div>
+                </form>                  
+                </div>
+                <div class="col-sm-6">
+                  <% twitter_message = "ERIN'S RECOMMENDATIONS ARE HERE!" %>
+                  <div class="social-links">
+                    <a href="http://www.facebook.com/sharer/sharer.php?u=<%= CGI::escape(root_url) %>?ref=<%= CGI::escape(@user.referral_code) %>&title=MenudMoments" class="fb" target="_blank"></a>
+                    <div class="sep"></div>
+                    <a href="http://twitter.com/share?url=<%= CGI::escape(root_url) %>?ref=<%= CGI::escape(@user.referral_code) %>&text=<%= CGI::escape(twitter_message) %>" class="twit" target="_blank"></a>
+                  </div>                  
+                </div>
+            </div>    
+        </div>
+    </div>    
+  </div>
+</div>
+
+<%
+  referrals_count = @user.referrals.count
+
+  stops = User::REFERRAL_STEPS
+
+  found = nil
+
+  stops.reverse_each { |stop|
+    if stop["count"] <= referrals_count and !found
+      stop["selected"] = true
+      found = stop
+    else
+      stop["selected"] = false
+    end
+  }
+%>
+<div class="container">
+    <div class="row">
+      <div class="col-sm-4"></div>
+      <div class="col-sm-4"><p class="how_is_works">Here's How It Works:</p></div>
+      <div class="col-sm-4"></div>
+    </div>
+    <div class="row">
+      <ul class="progress-indicator">
+        <li class="completed">
+            <span class="help_text1">Friends Joined</span>
+            <span class="bubble"></span> 
+            <span class="help_text2">Menud Freebie</span>
+        </li>
+        <% stops.each do |stop| %>
+          <li class="<% if stop["selected"] %>completed<% end %>">
+            <span class="help_text1"><%= stop["html1"].html_safe %></span>  
+            <span class="bubble"></span>
+            <span class="help_text2"><%= stop["html2"].html_safe %></span>   
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="row">
+      <div class="col-sm-4"></div>
+      <div class="col-sm-4 text-center palace_oders">
+        <%
+          words = ''
+          if referrals_count == 1
+            words = 'friend has'
+          elsif
+            words = 'friends have'
+          end
+        %>
+
+        <% if referrals_count == 0 %>
+          <p><span>No</span> friends have joined...Yet!</p>
+        <% else %>
+          <p><span><%= referrals_count %></span> <%= words %> joined</p>
+        <% end %>
+        <p>Keep checking</p>        
+      </div>
+      <div class="col-sm-4"></div>
+    </div>
+</div>
