@@ -16,26 +16,22 @@ class User < ActiveRecord::Base
   REFERRAL_STEPS = [
     {
       'count' => 5,
-      'html1' => 'For 5 friends',
-      'html2' => '1 month Free',
+      'html1' => '360Fly Gear',
       'class' => 'two'
     },
     {
       'count' => 10,
-      'html1' => 'For 10 friends',
-      'html2' => '3 months Free',
+      'html1' => '360Fly Accessories',
       'class' => 'three'
     },
     {
       'count' => 25,
-      'html1' => 'For 25 friends',
-      'html2' => '3 months Free <br> + Fireside chat with Erin',
+      'html1' => '360FLY VR headset',
       'class' => 'four'
     },
     {
       'count' => 50,
-      'html1' => 'For 50 friends',
-      'html2' => '3 months Free <br> + Fireside chat with Erin <br> + Erins 4x4 book',
+      'html1' => 'The All-new PhantomFly camera',
       'class' => 'five'
     }
   ]
