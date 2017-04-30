@@ -17,22 +17,30 @@ class User < ActiveRecord::Base
     {
       'count' => 5,
       'html1' => '360Fly Gear',
-      'class' => 'two'
+      'class' => 'two',
+      'image' =>  ActionController::Base.helpers.asset_path(
+        'assets/refer/pov-pole-1.png')
     },
     {
       'count' => 10,
       'html1' => '360Fly Accessories',
-      'class' => 'three'
+      'class' => 'three',
+      'image' =>  ActionController::Base.helpers.asset_path(
+        'assets/refer/360fly-divehousing-front.png')
     },
     {
       'count' => 25,
       'html1' => '360FLY VR headset',
-      'class' => 'four'
+      'class' => 'four',
+      'image' =>  ActionController::Base.helpers.asset_path(
+        'assets/refer/vr-headset-closeup.png')
     },
     {
       'count' => 50,
       'html1' => 'The All-new PhantomFly camera',
-      'class' => 'five'
+      'class' => 'five',
+      'image' =>  ActionController::Base.helpers.asset_path(
+        'assets/refer/hd3_1.png')
     }
   ]
 
